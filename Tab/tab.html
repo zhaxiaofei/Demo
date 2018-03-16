@@ -5,16 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tab组件</title>
+    <title>查小飞作品:Tab组件</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        /* body{
-            background-color:rgba(32, 12, 12,0.4);
-        } */
         @font-face {
   font-family: 'myicon';  /* project id 593129 */
   src: url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.eot');
@@ -30,21 +27,17 @@
 }
         .tab-wrapper {
             width:300px;
-            /* border: 1px solid rgb(167, 151, 151); */
             margin: 0 auto;
             margin-top: 10px;
         }
-
         .tab-wrapper>.tabs {
             list-style: none;
         }
-
         .tab-wrapper>.clear-fix::after {
             display: block;
             content: '';
             clear: both;
         }
-
         .tab-wrapper>.tabs>li {
             float: left;
             border: 1px solid #a3a3a2 ;
@@ -52,8 +45,6 @@
             cursor: pointer;
             text-align: center;
             padding: 10px;
-            /* border-bottom-left-radius:8%;
-            border-bottom-right-radius:8%; */
         }
         .tab-wrapper>.tabs>li:hover{
             color:#00a497;
@@ -65,14 +56,14 @@
             border-top: none;
             margin-top:-5px;
         }
-
         .tabs-content>li {
             display: none;
+            height: 500px;
         }
         .tabs-content>li>img{
             width:100%;
+            height: 100%;
         }
-
         .tabs-content>li.visible {
             display: block;
         }
@@ -80,14 +71,12 @@
             display:block;
             font-size:14px;
         }
-
         .tabs>.active {
             background-color: #00a497;
             color: #fff !important;
         }
     </style>
 </head>
-
 <body>
     <div class="tab-wrapper">
         <ol class='tabs clear-fix'>
