@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tab组件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* body{
+            background-color:rgba(32, 12, 12,0.4);
+        } */
+        @font-face {
+  font-family: 'myicon';  /* project id 593129 */
+  src: url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.eot');
+  src: url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.woff') format('woff'),
+  url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_593129_qanpdxdzldptx1or.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family: 'myicon'!important;
+    font-size: 20px;
+    font-style: normal;
+}
+        .tab-wrapper {
+            width:300px;
+            /* border: 1px solid rgb(167, 151, 151); */
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .tab-wrapper>.tabs {
+            list-style: none;
+        }
+
+        .tab-wrapper>.clear-fix::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .tab-wrapper>.tabs>li {
+            float: left;
+            border: 1px solid #a3a3a2 ;
+            width: 25%;
+            cursor: pointer;
+            text-align: center;
+            padding: 10px;
+            /* border-bottom-left-radius:8%;
+            border-bottom-right-radius:8%; */
+        }
+        .tab-wrapper>.tabs>li:hover{
+            color:#00a497;
+        }
+        .tabs-content {
+            list-style: none;
+            border-bottom-left-radius:5%;
+            border-bottom-right-radius:5%;
+            border-top: none;
+            margin-top:-5px;
+        }
+
+        .tabs-content>li {
+            display: none;
+        }
+        .tabs-content>li>img{
+            width:100%;
+        }
+
+        .tabs-content>li.visible {
+            display: block;
+        }
+        .tabs>li>.iconfont>span{
+            display:block;
+            font-size:14px;
+        }
+
+        .tabs>.active {
+            background-color: #00a497;
+            color: #fff !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab-wrapper">
+        <ol class='tabs clear-fix'>
+            <li class='active'><span class='iconfont'>&#xe657;<span>首页</span></span></li>
+            <li><span class='iconfont'>&#xe758;<span>最火</span></span></li>
+            <li><span class='iconfont'>&#xe681;<span>发现</span></span></li>
+            <li><span class='iconfont'>&#xe60d;<span>我的</span></span></li>
+        </ol>
+        <ol class='tabs-content'>
+            <li class='visible'><img src="Imgs/a.png" alt=""></li>
+            <li><img src="Imgs/b.png" alt=""></li>
+            <li><img src="Imgs/c.png" alt=""></li>
+            <li><img src="Imgs/d.png" alt=""></li>
+        </ol>
+    </div>  
+</body>
+<script>
+    function Tab(ct) {
+            this.ct = ct
+            this.init()
+            this.bind()
+        }
+        Tab.prototype.init = function () {
+            this.tabLis = this.ct.querySelectorAll('.tabs>li')
+            this.contentLis = this.ct.querySelectorAll('.tabs-content>li')
+        }
+        Tab.prototype.bind = function () {
+            var _this = this
+            _this.tabLis.forEach(function (tabLi) {
+                tabLi.onclick = function (e) {
+                    var clickedTab = this
+                    var index = [].indexOf.call(_this.tabLis, clickedTab)
+                    _this.tabLis.forEach(function (tabLi) {
+                        tabLi.classList.remove('active')
+                    })
+                    clickedTab.classList.add('active')
+                    _this.contentLis.forEach(function (contentLi) {
+                        contentLi.classList.remove('visible')
+                    })
+                  _this.contentLis[index].classList.add('visible')
+                }
+            })
+        }
+    var tab1 = new Tab(document.querySelectorAll('.tab-wrapper')[0])
+   
+</script>
